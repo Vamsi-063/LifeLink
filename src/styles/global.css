@@ -139,20 +139,22 @@ button{
 }
 
 .back-btn{
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: #000;   /* Black */
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-    padding: 0;
+    position:absolute;
+    left:15px;
+    top:30px;
+    background:transparent;
+    border:none;
+    color:#000;
+    font-size:30px;
+    cursor:pointer;
+    z-index:1001;
 }
 
-.back-btn:hover{
-    color: #333;
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    position:relative;
 }
 
 /* ==========================================

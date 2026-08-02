@@ -55,18 +55,18 @@ function Navbar() {
   return (
     <nav className="navbar">
 
-      {/* Logo + Back Button */}
+      {/* Back Button */}
+      {location.pathname !== "/" && (
+        <button
+          className="back-btn"
+          onClick={() => navigate(-1)}
+        >
+          <FaArrowLeft />
+        </button>
+      )}
+
+      {/* Logo */}
       <div className="logo">
-
-        {location.pathname !== "/" && (
-          <button
-            className="back-btn"
-            onClick={() => navigate(-1)}
-          >
-            <FaArrowLeft />
-          </button>
-        )}
-
         <Link to="/" className="logo-link">
 
           <div className="brand">
@@ -80,7 +80,6 @@ function Navbar() {
           </p>
 
         </Link>
-
       </div>
 
       {/* Navigation Links */}
