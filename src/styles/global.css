@@ -100,13 +100,13 @@ button{
 ========================================== */
 
 .logo-link{
-    text-decoration:none;
+    text-decoration: none;
 }
 
 .logo{
-    display:flex;
-    flex-direction:column;
-    line-height:1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .brand{
@@ -126,7 +126,7 @@ button{
     color:var(--primary);
 }
 
-.link{
+.link-text{
     color:#111;
 }
 
@@ -135,8 +135,24 @@ button{
     font-weight:600;
     color:var(--secondary);
     margin-top:4px;
-    text-align:center;
     letter-spacing:1px;
+}
+
+.back-btn{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #000;   /* Black */
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    padding: 0;
+}
+
+.back-btn:hover{
+    color: #333;
 }
 
 /* ==========================================
@@ -164,6 +180,64 @@ button{
     border-bottom:3px solid var(--secondary);
     padding-bottom:5px;
     font-weight:700;
+}
+
+@media (max-width:768px){
+
+    .navbar{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:space-between;
+        align-items:center;
+        padding:15px;
+        gap:15px;
+    }
+
+    .logo{
+        display:flex;
+        align-items:center;
+        gap:8px;
+    }
+
+    .nav-links{
+        width:100%;
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:15px;
+    }
+
+    .nav-buttons{
+        width:100%;
+        display:flex;
+        justify-content:center;
+        gap:10px;
+        flex-wrap:wrap;
+    }
+
+    .login-btn,
+    .register-btn,
+    .logout-btn{
+        width:130px;
+    }
+
+    .brand{
+        font-size:22px;
+    }
+
+    .heart{
+        font-size:30px;
+    }
+
+    .tagline{
+        font-size:11px;
+    }
+
+    .back-btn{
+        font-size:22px;
+        margin-right:8px;
+    }
+
 }
 
 /* ==========================================
@@ -2428,20 +2502,3 @@ to{
 
 }
 
-.back-btn{
-  background: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-size: 22px;
-  color: #d62828;
-  margin-right: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-}
-
-.back-btn:hover{
-  color: #0d6efd;
-}
