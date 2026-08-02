@@ -2427,3 +2427,21 @@ to{
     }
 
 }
+
+.back-btn{
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 22px;
+  color: #d62828;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.back-btn:hover{
+  color: #0d6efd;
+}

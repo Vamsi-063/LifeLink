@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaHeartPulse } from "react-icons/fa6";
+import { FaHeartPulse, FaArrowLeft } from "react-icons/fa6";
+
 function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -21,20 +22,20 @@ function Navbar() {
         return location.pathname === "/about";
 
       case "services":
-  return [
-    "/services",
-    "/hospitals",
-    "/hospital",
-    "/doctors",
-    "/doctor",
-    "/appointment",
-    "/bloodbanks",
-    "/bloodbank",
-    "/ambulance",
-    "/contacts",
-    "/bloodrequest",
-    "/emergencycontacts",
-  ].some((path) => location.pathname.startsWith(path));
+        return [
+          "/services",
+          "/hospitals",
+          "/hospital",
+          "/doctors",
+          "/doctor",
+          "/appointment",
+          "/bloodbanks",
+          "/bloodbank",
+          "/ambulance",
+          "/contacts",
+          "/bloodrequest",
+          "/emergencycontacts",
+        ].some((path) => location.pathname.startsWith(path));
 
       case "contact":
         return location.pathname === "/contact";
@@ -54,26 +55,34 @@ function Navbar() {
   return (
     <nav className="navbar">
 
+      {/* Back Button */}
+      {location.pathname !== "/" && (
+        <button
+          className="back-btn"
+          onClick={() => navigate(-1)}
+        >
+          <FaArrowLeft />
+        </button>
+      )}
+
+      {/* Logo */}
       <div className="logo">
-  <Link to="/" className="logo-link">
+        <Link to="/" className="logo-link">
 
-    <div className="brand">
+          <div className="brand">
+            <FaHeartPulse className="heart" />
+            <span className="life">Life</span>
+            <span className="link-text">Link</span>
+          </div>
 
-      <FaHeartPulse className="heart" />
+          <p className="tagline">
+            Emergency Care
+          </p>
 
-      <span className="life">Life</span>
+        </Link>
+      </div>
 
-      <span className="link-text">Link</span>
-
-    </div>
-
-    <p className="tagline">
-      Emergency Care
-    </p>
-
-  </Link>
-</div>
-
+      {/* Navigation Links */}
       <div className="nav-links">
 
         <Link
@@ -115,6 +124,7 @@ function Navbar() {
 
       </div>
 
+      {/* Login/Register or Logout */}
       <div className="nav-buttons">
 
         {!isLoggedIn ? (
