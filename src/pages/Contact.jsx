@@ -3,57 +3,80 @@ import {
   FaPhone,
   FaEnvelope,
   FaLocationDot,
+  FaWhatsapp,
 } from "react-icons/fa6";
 
 function Contact() {
-
   return (
-
     <section className="contact-page page-background">
-
       <div className="container">
 
         <h1>Contact Support</h1>
 
         <p className="section-text">
-          We are here when you need us the most.
-          LifeLink connects you with reliable emergency support
-          anytime, anywhere.
+          Need help? Contact the LifeLink Emergency Care support team.
+          You can call, email, or chat with us on WhatsApp anytime.
         </p>
 
         <div className="contact-wrapper">
 
           <div className="contact-info">
 
-            <div className="contact-card">
+            {/* Phone */}
 
+            <a
+              href="tel:+91YOUR_PHONE_NUMBER"
+              className="contact-card"
+            >
               <FaPhone />
 
               <div>
-                <h3>Emergency Helpline</h3>
-                <p>Call 108 for immediate medical assistance.</p>
+                <h3>Call Support</h3>
+                <p>+91 8639337702</p>
               </div>
 
-            </div>
+            </a>
 
-            <div className="contact-card">
+            {/* Email */}
 
+            <a
+              href="mailto:lifelinkemergencycare@gmail.com"
+              className="contact-card"
+            >
               <FaEnvelope />
 
               <div>
-                <h3>lifelinkemergencycare@gmail.com</h3>
-                <p>Our support team will respond quickly.</p>
+                <h3>Email Support</h3>
+                <p>lifelinksupport108@gmail.com</p>
               </div>
 
-            </div>
+            </a>
+
+            {/* WhatsApp */}
+
+            <a
+              href="https://wa.me/91YOUR_PHONE_NUMBER"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-card"
+            >
+              <FaWhatsapp />
+
+              <div>
+                <h3>WhatsApp Support</h3>
+                <p>Chat with us instantly</p>
+              </div>
+
+            </a>
+
+            {/* Address */}
 
             <div className="contact-card">
-
               <FaLocationDot />
 
               <div>
-                <h3>Emergency Care Center</h3>
-                <p>Find nearby healthcare assistance easily.</p>
+                <h3>LifeLink Emergency Care</h3>
+                <p>Andhra Pradesh, India</p>
               </div>
 
             </div>
@@ -74,7 +97,7 @@ function Contact() {
 
             <textarea
               rows="5"
-              placeholder="Describe your emergency or message"
+              placeholder="Describe your message"
             ></textarea>
 
             <button className="primary-btn">
@@ -90,11 +113,10 @@ function Contact() {
         </h2>
 
         <p className="map-text">
-          Locate emergency services near you and get help faster.
+          Locate emergency services near you.
         </p>
 
         <div className="contact-map">
-
           <iframe
             title="LifeLink Location"
             src="https://www.google.com/maps?q=Andhra Pradesh&output=embed"
@@ -104,15 +126,11 @@ function Contact() {
             loading="lazy"
             allowFullScreen
           ></iframe>
-
         </div>
 
       </div>
-
     </section>
-
   );
-
 }
 
 export default Contact;
