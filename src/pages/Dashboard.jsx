@@ -13,6 +13,8 @@ function Dashboard() {
 
   const navigate = useNavigate();
 
+  const user = JSON.parse(localStorage.getItem("user"));
+
   const handleSOS = () => {
 
     if (!navigator.geolocation) {
@@ -60,7 +62,9 @@ function Dashboard() {
 
           <div>
 
-            <h2>👋 Welcome to LifeLink</h2>
+            <h2>
+              👋 Welcome {user?.name || "User"}
+            </h2>
 
             <p>Your Safety Is Our Priority</p>
 
@@ -73,6 +77,22 @@ function Dashboard() {
             Safe
 
           </div>
+
+        </div>
+
+        {/* User Details */}
+
+        <div className="dashboard-card profile-summary">
+
+          <h2>👤 Logged In User</h2>
+
+          <p><strong>Name:</strong> {user?.name}</p>
+
+          <p><strong>Email:</strong> {user?.email}</p>
+
+          {user?.phone && (
+            <p><strong>Mobile:</strong> {user.phone}</p>
+          )}
 
         </div>
 

@@ -772,14 +772,17 @@ button{
     margin-bottom:15px;
 }
 
+/* ==========================================
+   CONTACT WRAPPER
+========================================== */
+
 .contact-wrapper{
     width:90%;
     max-width:1050px;
-    margin:60px auto 0;
-
+    margin:40px auto 0;
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:30px;
+    gap:20px;
 }
 
 /* ==========================================
@@ -796,17 +799,11 @@ button{
     display:flex;
     align-items:center;
     gap:20px;
-
     background:#fff;
-
     padding:22px;
-
     border-radius:18px;
-
     box-shadow:0 6px 18px rgba(0,0,0,.08);
-
     color:inherit;
-
     transition:.3s;
 }
 
@@ -818,36 +815,28 @@ button{
 .contact-card svg{
     width:60px;
     height:60px;
-
     padding:15px;
-
     border-radius:50%;
-
     background:#f3f4f6;
-
     font-size:24px;
 }
 
 /* Phone */
-
 .contact-card:nth-child(1) svg{
     color:#2563eb;
 }
 
 /* Email */
-
 .contact-card:nth-child(2) svg{
     color:#dc2626;
 }
 
 /* WhatsApp */
-
 .contact-card:nth-child(3) svg{
     color:#25D366;
 }
 
 /* Location */
-
 .contact-card:nth-child(4) svg{
     color:#f59e0b;
 }
@@ -873,53 +862,45 @@ button{
     gap:16px;
 
     background:#fff;
-
     padding:25px;
 
     border-radius:18px;
-
     box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    height:fit-content;      /* Add this */
+    align-self:start;        /* Add this */
 }
 
 .contact-form input,
 .contact-form textarea{
 
     width:100%;
-
     padding:14px 16px;
 
     border:1px solid #d1d5db;
-
     border-radius:10px;
 
     font-size:15px;
-
     outline:none;
 
     transition:.3s;
-
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus{
-
     border-color:var(--secondary);
-
 }
 
 .contact-form textarea{
-
     resize:none;
-
-    min-height:150px;
-
+    min-height:120px;   /* 150px → 120px */
 }
 
 .contact-form button{
 
     width:180px;
 
-    margin:10px auto 0;
+    margin:0 auto;      /* 10px auto 0 → 0 auto */
 
     padding:13px;
 
@@ -930,17 +911,13 @@ button{
     color:#fff;
 
     font-size:16px;
-
     font-weight:600;
 
     transition:.3s;
-
 }
 
 .contact-form button:hover{
-
     background:#b91c1c;
-
 }
 
 /* ==========================================
@@ -948,47 +925,30 @@ button{
 ========================================== */
 
 .map-title{
-
     text-align:center;
-
     color:var(--primary);
-
     font-size:34px;
-
-    margin-top:70px;
-
+    margin-top:40px;
 }
 
 .map-text{
-
     text-align:center;
-
     color:var(--gray);
-
-    margin:15px 0 35px;
-
+    margin:10px 0 20px;
 }
 
 .contact-map{
-
-    margin-top:60px;
-
+    margin-top:20px;
     border-radius:20px;
-
     overflow:hidden;
-
     box-shadow:0 10px 25px rgba(0,0,0,.08);
-
 }
 
 .contact-map iframe{
-
     width:100%;
-
+    height:350px;
     display:block;
-
     border:none;
-
 }
 
 /* ==========================================
@@ -997,45 +957,47 @@ button{
 
 @media(max-width:900px){
 
-.contact-wrapper{
+    .contact-wrapper{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
 
-    grid-template-columns:1fr;
-
-}
-
-.contact-page h1{
-
-    font-size:34px;
-
-}
+    .contact-page h1{
+        font-size:34px;
+    }
 
 }
 
 @media(max-width:768px){
 
-.contact-page{
+    .contact-page{
+        padding:50px 15px;
+    }
 
-    padding:60px 20px;
+    .contact-card{
+        padding:18px;
+    }
 
-}
+    .contact-form{
+        padding:20px;
+    }
 
-.contact-card{
+    .contact-form button{
+        width:100%;
+    }
 
-    padding:18px;
+    .map-title{
+        font-size:28px;
+        margin-top:30px;
+    }
 
-}
+    .map-text{
+        margin:10px 0 15px;
+    }
 
-.contact-form{
-
-    padding:20px;
-
-}
-
-.contact-form button{
-
-    width:100%;
-
-}
+    .contact-map{
+        margin-top:15px;
+    }
 
 }
 
@@ -1459,6 +1421,83 @@ button{
     color:var(--gray);
     line-height:1.6;
     margin-bottom:20px;
+}
+/* ==========================================
+   DASHBOARD BUTTONS
+========================================== */
+
+.sos-btn,
+.blue-btn,
+.red-btn,
+.green-btn,
+.purple-btn,
+.dark-btn{
+    width:100%;
+    padding:12px 20px;
+    border:none;
+    border-radius:30px;
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+    margin-top:15px;
+}
+
+.sos-btn{
+    background:#dc2626;
+}
+
+.sos-btn:hover{
+    background:#b91c1c;
+}
+
+.blue-btn{
+    background:#2563eb;
+}
+
+.blue-btn:hover{
+    background:#1d4ed8;
+}
+
+.red-btn{
+    background:#ef4444;
+}
+
+.red-btn:hover{
+    background:#dc2626;
+}
+
+.green-btn{
+    background:#16a34a;
+}
+
+.green-btn:hover{
+    background:#15803d;
+}
+
+.purple-btn{
+    background:#7c3aed;
+}
+
+.purple-btn:hover{
+    background:#6d28d9;
+}
+
+.dark-btn{
+    background:#111827;
+}
+
+.dark-btn:hover{
+    background:#000;
+}
+
+.dashboard-card a{
+    text-decoration:none;
+}
+
+.dashboard-card button{
+    outline:none;
 }
 
 /* ==========================================
@@ -2504,3 +2543,108 @@ to{
 
 }
 
+/* ==========================================
+   GLOBAL RESPONSIVE FIX
+========================================== */
+
+html,
+body,
+#root{
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing:border-box;
+}
+
+img,
+iframe,
+video{
+    max-width:100%;
+    height:auto;
+}
+
+.container{
+    width:100%;
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 15px;
+}
+
+.page-background,
+.home-container,
+.about-page,
+.services-page,
+.contact-page,
+.dashboard-page,
+.location-page,
+.profile-page,
+.auth-page{
+    width:100%;
+    overflow-x:hidden;
+}
+
+@media (max-width:768px){
+
+    .container{
+        padding:0 15px;
+    }
+
+    .navbar{
+        width:100%;
+    }
+
+    .hero-container,
+    .contact-wrapper,
+    .dashboard-grid,
+    .service-grid,
+    .about-cards{
+        width:100%;
+    }
+
+    .contact-card,
+    .emergency-card,
+    .dashboard-card,
+    .about-card,
+    .details-card,
+    .location-card,
+    .profile-card,
+    .form-container{
+        width:100%;
+        max-width:100%;
+    }
+
+    input,
+    textarea,
+    select,
+    button{
+        max-width:100%;
+    }
+}
+
+.nav-link-btn{
+    background:none;
+    border:none;
+    cursor:pointer;
+    font-size:18px;
+    font-weight:500;
+    color:#222;
+    transition:.3s;
+    padding:0;
+    font-family:inherit;
+}
+
+.nav-link-btn:hover{
+    color:var(--secondary);
+}
+
+.nav-link-btn.active{
+    color:var(--secondary);
+    border-bottom:3px solid var(--secondary);
+    padding-bottom:5px;
+    font-weight:700;
+}

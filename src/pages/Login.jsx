@@ -23,11 +23,17 @@ function Login() {
       );
 
       if (user) {
+        // Login Session
         localStorage.setItem("isLoggedIn", "true");
+
+        // User ID
+        localStorage.setItem("userId", user.id);
+
+        // User Details
         localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("userEmail", user.email);
 
         alert("Login Successful ✅");
+
         navigate("/dashboard");
       } else {
         alert("Invalid Email or Password ❌");
@@ -41,6 +47,7 @@ function Login() {
   return (
     <section className="auth-page">
       <div className="auth-container">
+
         <h1>Welcome Back</h1>
 
         <p className="auth-subtitle">
@@ -48,6 +55,7 @@ function Login() {
         </p>
 
         <form className="auth-form" onSubmit={handleLogin}>
+
           <div className="input-box">
             <FaEnvelope />
 
@@ -77,17 +85,20 @@ function Login() {
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
+
           </div>
 
           <button type="submit" className="login-btn">
             Login
           </button>
+
         </form>
 
         <p className="register-link">
           Don't have an account?{" "}
           <Link to="/register">Register</Link>
         </p>
+
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FaCircleUser,
   FaEnvelope,
@@ -6,10 +6,54 @@ import {
   FaDroplet,
   FaUserGroup
 } from "react-icons/fa6";
+import api from "../services/api";
 
 function Profile() {
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  const currentUser = JSON.parse(localStorage.getItem("user"));
+
+  const [editing, setEditing] = useState(false);
+
+  const [user, setUser] = useState(currentUser);
+
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const saveProfile = async () => {
+
+    try {
+
+      await api.put(`/users/${user.id}`, user);
+
+      localStorage.setItem(
+        "user",
+        JSON.stringify(user)
+      );
+
+      alert("Profile Updated Successfully ✅");
+
+      setEditing(false);
+
+    } catch (err) {
+
+      alert("Unable to update profile ❌");
+
+    }
+
+  };
+
+  const logout = () => {
+
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("user");
+
+    window.location.href = "/login";
+
+  };
 
   return (
 
@@ -39,58 +83,130 @@ function Profile() {
 
               <div className="profile-item">
                 <FaEnvelope className="profile-icon" />
+
                 <div>
+
                   <h4>Email</h4>
-                  <p>{user.email}</p>
+
+                  <input
+                    type="email"
+                    name="email"
+                    value={user.email || ""}
+                    onChange={handleChange}
+                    disabled={!editing}
+                  />
+
                 </div>
+
               </div>
 
               <div className="profile-item">
+
                 <FaPhone className="profile-icon" />
+
                 <div>
+
                   <h4>Phone</h4>
-                  <p>{user.phone}</p>
+
+                  <input
+                    type="text"
+                    name="phone"
+                    value={user.phone || ""}
+                    onChange={handleChange}
+                    disabled={!editing}
+                  />
+
                 </div>
+
               </div>
 
               <div className="profile-item">
+
                 <FaDroplet className="profile-icon" />
+
                 <div>
+
                   <h4>Blood Group</h4>
-                  <p>{user.bloodGroup}</p>
+
+                  <input
+                    type="text"
+                    name="bloodGroup"
+                    value={user.bloodGroup || ""}
+                    onChange={handleChange}
+                    disabled={!editing}
+                  />
+
                 </div>
+
               </div>
 
               <div className="profile-item">
+
                 <FaUserGroup className="profile-icon" />
+
                 <div>
+
                   <h4>Emergency Contact</h4>
-                  <p>{user.emergencyName}</p>
+
+                  <input
+                    type="text"
+                    name="emergencyName"
+                    value={user.emergencyName || ""}
+                    onChange={handleChange}
+                    disabled={!editing}
+                  />
+
                 </div>
+
               </div>
 
               <div className="profile-item">
+
                 <FaPhone className="profile-icon" />
+
                 <div>
+
                   <h4>Emergency Phone</h4>
-                  <p>{user.emergencyPhone}</p>
+
+                  <input
+                    type="text"
+                    name="emergencyPhone"
+                    value={user.emergencyPhone || ""}
+                    onChange={handleChange}
+                    disabled={!editing}
+                  />
+
                 </div>
+
               </div>
 
             </div>
 
             <div className="profile-buttons">
 
-              <button className="edit-btn">
-                Edit Profile
-              </button>
+              {!editing ? (
+
+                <button
+                  className="edit-btn"
+                  onClick={() => setEditing(true)}
+                >
+                  Edit Profile
+                </button>
+
+              ) : (
+
+                <button
+                  className="edit-btn"
+                  onClick={saveProfile}
+                >
+                  Save Profile
+                </button>
+
+              )}
 
               <button
                 className="logout-btn"
-                onClick={() => {
-                  localStorage.removeItem("isLoggedIn");
-                  window.location.href = "/login";
-                }}
+                onClick={logout}
               >
                 Logout
               </button>

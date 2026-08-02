@@ -40,12 +40,15 @@ import BookAmbulance from "../pages/BookAmbulance";
 import ProtectedRoute from "../components/ProtectedRoute";
 
 function AppRoutes() {
+
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
   return (
+
     <Routes>
 
       {/* Home */}
+
       <Route
         path="/"
         element={
@@ -57,35 +60,149 @@ function AppRoutes() {
         }
       />
 
-      {/* Public Pages */}
-      <Route path="/about" element={<About />} />
-      <Route path="/services" element={<Services />} />
-      <Route path="/contact" element={<Contact />} />
-
       {/* Authentication */}
+
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
 
+      {/* Protected Pages */}
+
+      <Route
+        path="/about"
+        element={
+          <ProtectedRoute>
+            <About />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/services"
+        element={
+          <ProtectedRoute>
+            <Services />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/contact"
+        element={
+          <ProtectedRoute>
+            <Contact />
+          </ProtectedRoute>
+        }
+      />
+
       {/* Hospitals */}
-      <Route path="/hospitals" element={<Hospitals />} />
-      <Route path="/hospital/:id" element={<HospitalDetails />} />
+
+      <Route
+        path="/hospitals"
+        element={
+          <ProtectedRoute>
+            <Hospitals />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/hospital/:id"
+        element={
+          <ProtectedRoute>
+            <HospitalDetails />
+          </ProtectedRoute>
+        }
+      />
 
       {/* Doctors */}
-      <Route path="/doctors" element={<Doctors />} />
-      <Route path="/doctor/:id" element={<DoctorDetails />} />
-      <Route path="/appointment/:id" element={<Appointment />} />
+
+      <Route
+        path="/doctors"
+        element={
+          <ProtectedRoute>
+            <Doctors />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/doctor/:id"
+        element={
+          <ProtectedRoute>
+            <DoctorDetails />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/appointment/:id"
+        element={
+          <ProtectedRoute>
+            <Appointment />
+          </ProtectedRoute>
+        }
+      />
 
       {/* Blood Banks */}
-      <Route path="/bloodbanks" element={<BloodBanks />} />
-      <Route path="/bloodbank/:id" element={<BloodBankDetails />} />
-      <Route path="/bloodrequest/:id" element={<BloodRequest />} />
+
+      <Route
+        path="/bloodbanks"
+        element={
+          <ProtectedRoute>
+            <BloodBanks />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/bloodbank/:id"
+        element={
+          <ProtectedRoute>
+            <BloodBankDetails />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/bloodrequest/:id"
+        element={
+          <ProtectedRoute>
+            <BloodRequest />
+          </ProtectedRoute>
+        }
+      />
 
       {/* Emergency Contacts */}
-      <Route path="/emergencycontacts" element={<EmergencyContacts />} />
+
+      <Route
+        path="/emergencycontacts"
+        element={
+          <ProtectedRoute>
+            <EmergencyContacts />
+          </ProtectedRoute>
+        }
+      />
 
       {/* Ambulances */}
-      <Route path="/ambulances" element={<Ambulances />} />
-      <Route path="/ambulance/:id" element={<AmbulanceDetails />} />
+
+      <Route
+        path="/ambulances"
+        element={
+          <ProtectedRoute>
+            <Ambulances />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/ambulance/:id"
+        element={
+          <ProtectedRoute>
+            <AmbulanceDetails />
+          </ProtectedRoute>
+        }
+      />
+
       <Route
         path="/bookambulance/:id"
         element={
@@ -95,7 +212,8 @@ function AppRoutes() {
         }
       />
 
-      {/* Protected Pages */}
+      {/* Dashboard */}
+
       <Route
         path="/dashboard"
         element={
@@ -124,10 +242,16 @@ function AppRoutes() {
       />
 
       {/* 404 */}
-      <Route path="*" element={<Navigate to="/" replace />} />
+
+      <Route
+        path="*"
+        element={<Navigate to="/" replace />}
+      />
 
     </Routes>
+
   );
+
 }
 
 export default AppRoutes;

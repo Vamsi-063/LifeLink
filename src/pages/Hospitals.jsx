@@ -31,34 +31,55 @@ function Hospitals() {
         />
 
         <div className="service-grid">
-          {filteredHospitals.map((hospital) => (
-            <div key={hospital.id} className="emergency-card">
 
-              <div className="service-card-icon">
-                <FaHospital />
-              </div>
+  {filteredHospitals.length > 0 ? (
 
-              <h3>{hospital.name}</h3>
+    filteredHospitals.map((hospital) => (
 
-              <p>
-                <FaLocationDot /> {hospital.location}
-              </p>
+      <div key={hospital.id} className="emergency-card">
 
-              <p>
-                <FaPhone /> {hospital.phone}
-              </p>
-
-              <button
-  className="primary-btn"
-  onClick={() => {
-    window.location.href = `/hospital/${hospital.id}`;
-  }}
->
-  View Details
-</button>
-            </div>
-          ))}
+        <div className="service-card-icon">
+          <FaHospital />
         </div>
+
+        <h3>{hospital.name}</h3>
+
+        <p>
+          <FaLocationDot /> {hospital.location}
+        </p>
+
+        <p>
+          <FaPhone /> {hospital.phone}
+        </p>
+
+        <button
+          className="primary-btn"
+          onClick={() => {
+            window.location.href = `/hospital/${hospital.id}`;
+          }}
+        >
+          View Details
+        </button>
+
+      </div>
+
+    ))
+
+  ) : (
+
+    <div className="no-results">
+
+      <h2>🏥 No Hospital Found</h2>
+
+      <p>
+        Try searching with another hospital name.
+      </p>
+
+    </div>
+
+  )}
+
+</div>
 
       </div>
     </section>

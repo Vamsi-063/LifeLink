@@ -15,70 +15,65 @@ function Contact() {
 
         <p className="section-text">
           Need help? Contact the LifeLink Emergency Care support team.
-          You can call, email, or chat with us on WhatsApp anytime.
+          You can call, email, or chat with our support members anytime.
         </p>
 
         <div className="contact-wrapper">
 
           <div className="contact-info">
 
-            {/* Phone */}
+            {/* Support Member 1 */}
 
-            <a
-              href="tel:+91YOUR_PHONE_NUMBER"
-              className="contact-card"
-            >
+            <a href="tel:+919876543210" className="contact-card">
               <FaPhone />
-
               <div>
-                <h3>Call Support</h3>
-                <p>+91 8639337702</p>
+                <h3>supporter 1</h3>
+                <p>📞 +91 86393 37702</p>
               </div>
-
             </a>
 
-            {/* Email */}
+            {/* Support Member 2 */}
 
-            <a
-              href="mailto:lifelinkemergencycare@gmail.com"
-              className="contact-card"
-            >
-              <FaEnvelope />
-
+            <a href="tel:+919182352294" className="contact-card">
+              <FaPhone />
               <div>
-                <h3>Email Support</h3>
-                <p>lifelinksupport108@gmail.com</p>
+                <h3>supporter 2</h3>
+                <p>📞 +91 91823 52294</p>
               </div>
-
             </a>
 
-            {/* WhatsApp */}
-
             <a
-              href="https://wa.me/91YOUR_PHONE_NUMBER"
+              href="https://wa.me/918639337702"
               target="_blank"
               rel="noopener noreferrer"
               className="contact-card"
             >
               <FaWhatsapp />
-
               <div>
-                <h3>WhatsApp Support</h3>
-                <p>Chat with us instantly</p>
+                <h3>Chat with us</h3>
+                <p>💬 WhatsApp Support</p>
               </div>
+            </a>
 
+            <a
+              href="mailto:chakalivamsi557@gmail.com"
+              className="contact-card"
+            >
+              <FaEnvelope />
+              <div>
+                <h3>Mail us</h3>
+                <p>lifelinksupport108@gmail.com</p>
+              </div>
             </a>
 
             {/* Address */}
 
             <div className="contact-card">
               <FaLocationDot />
-
               <div>
                 <h3>LifeLink Emergency Care</h3>
                 <p>Andhra Pradesh, India</p>
               </div>
-
             </div>
 
           </div>

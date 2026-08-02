@@ -60,6 +60,8 @@ function Doctors() {
                 <FaStar color="#f5b301" /> {doctor.rating}
               </p>
 
+              
+
               <button
                 className="primary-btn"
                 onClick={() => navigate(`/doctor/${doctor.id}`)}

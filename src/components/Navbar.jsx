@@ -6,11 +6,22 @@ function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
   const logout = () => {
     localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("user");
     navigate("/login");
+  };
+
+  const handleProtectedNavigation = (path) => {
+    if (!isLoggedIn) {
+      alert("Please Login First 🔒");
+      navigate("/login");
+      return;
+    }
+
+    navigate(path);
   };
 
   const isActive = (page) => {
@@ -32,7 +43,8 @@ function Navbar() {
           "/bloodbanks",
           "/bloodbank",
           "/ambulance",
-          "/contacts",
+          "/ambulances",
+          "/bookambulance",
           "/bloodrequest",
           "/emergencycontacts",
         ].some((path) => location.pathname.startsWith(path));
@@ -82,7 +94,7 @@ function Navbar() {
         </Link>
       </div>
 
-      {/* Navigation Links */}
+      {/* Navigation */}
       <div className="nav-links">
 
         <Link
@@ -92,26 +104,26 @@ function Navbar() {
           Home
         </Link>
 
-        <Link
-          to="/about"
-          className={isActive("about") ? "active" : ""}
+        <button
+          className={`nav-link-btn ${isActive("about") ? "active" : ""}`}
+          onClick={() => handleProtectedNavigation("/about")}
         >
           About
-        </Link>
+        </button>
 
-        <Link
-          to="/services"
-          className={isActive("services") ? "active" : ""}
+        <button
+          className={`nav-link-btn ${isActive("services") ? "active" : ""}`}
+          onClick={() => handleProtectedNavigation("/services")}
         >
           Services
-        </Link>
+        </button>
 
-        <Link
-          to="/contact"
-          className={isActive("contact") ? "active" : ""}
+        <button
+          className={`nav-link-btn ${isActive("contact") ? "active" : ""}`}
+          onClick={() => handleProtectedNavigation("/contact")}
         >
           Contact
-        </Link>
+        </button>
 
         {isLoggedIn && (
           <Link
@@ -124,7 +136,7 @@ function Navbar() {
 
       </div>
 
-      {/* Login/Register or Logout */}
+      {/* Buttons */}
       <div className="nav-buttons">
 
         {!isLoggedIn ? (
