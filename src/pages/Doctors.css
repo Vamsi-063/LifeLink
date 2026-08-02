@@ -1,0 +1,23 @@
+.doctor-search{
+    width:100%;
+    max-width:500px;
+    display:block;
+    margin:25px auto 40px;
+    padding:14px 18px;
+    font-size:16px;
+    border:2px solid #dbeafe;
+    border-radius:10px;
+    outline:none;
+}
+
+.doctor-search:focus{
+    border-color:#2563eb;
+}
+
+.emergency-card strong{
+    color:#2563eb;
+}
+
+.emergency-card p{
+    margin:8px 0;
+}

@@ -1,127 +1,145 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import { FaHeartPulse } from "react-icons/fa6";
 function Navbar() {
-
   const location = useLocation();
   const navigate = useNavigate();
 
   const isLoggedIn = localStorage.getItem("isLoggedIn");
 
-
   const logout = () => {
-
     localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-
     navigate("/login");
-    window.location.reload();
-
   };
 
+  const isActive = (page) => {
+    switch (page) {
+      case "home":
+        return location.pathname === "/";
 
-  const activeClass = (path) => {
-    return location.pathname === path ? "active" : "";
+      case "about":
+        return location.pathname === "/about";
+
+      case "services":
+  return [
+    "/services",
+    "/hospitals",
+    "/hospital",
+    "/doctors",
+    "/doctor",
+    "/appointment",
+    "/bloodbanks",
+    "/bloodbank",
+    "/ambulance",
+    "/contacts",
+    "/bloodrequest",
+    "/emergencycontacts",
+  ].some((path) => location.pathname.startsWith(path));
+
+      case "contact":
+        return location.pathname === "/contact";
+
+      case "dashboard":
+        return [
+          "/dashboard",
+          "/location",
+          "/profile",
+        ].some((path) => location.pathname.startsWith(path));
+
+      default:
+        return false;
+    }
   };
-
 
   return (
-
     <nav className="navbar">
 
       <div className="logo">
-     <div className="brand">
-    <span className="heart">❤️</span>
-    <span className="life">Life</span>
-    <span className="link">Link</span>
-  </div>
+  <Link to="/" className="logo-link">
 
-      <div className="tagline">
-           Emergency Care
-       </div>
-  </div>
+    <div className="brand">
 
+      <FaHeartPulse className="heart" />
+
+      <span className="life">Life</span>
+
+      <span className="link-text">Link</span>
+
+    </div>
+
+    <p className="tagline">
+      Emergency Care
+    </p>
+
+  </Link>
+</div>
 
       <div className="nav-links">
 
-
-        <Link 
+        <Link
           to="/"
-          className={activeClass("/")}
+          className={isActive("home") ? "active" : ""}
         >
           Home
         </Link>
 
-
-        <Link 
+        <Link
           to="/about"
-          className={activeClass("/about")}
+          className={isActive("about") ? "active" : ""}
         >
           About
         </Link>
 
-
-        <Link 
+        <Link
           to="/services"
-          className={activeClass("/services")}
+          className={isActive("services") ? "active" : ""}
         >
           Services
         </Link>
 
-
-        <Link 
+        <Link
           to="/contact"
-          className={activeClass("/contact")}
+          className={isActive("contact") ? "active" : ""}
         >
-          Contacts
+          Contact
         </Link>
 
+        {isLoggedIn && (
+          <Link
+            to="/dashboard"
+            className={isActive("dashboard") ? "active" : ""}
+          >
+            Dashboard
+          </Link>
+        )}
 
+      </div>
 
-        {
-          isLoggedIn && (
-            <Link 
-              to="/dashboard"
-              className={activeClass("/dashboard")}
-            >
-              Dashboard
-            </Link>
-          )
-        }
+      <div className="nav-buttons">
 
-
-
-        {
-          isLoggedIn ? (
-
-            <button 
-              className="logout-btn"
-              onClick={logout}
-            >
-              Logout
-            </button>
-
-          ) : (
-
-            <Link 
-              to="/login"
-              className={activeClass("/login")}
-            >
+        {!isLoggedIn ? (
+          <>
+            <Link to="/login" className="login-btn">
               Login
             </Link>
 
-          )
-        }
-
+            <Link to="/register" className="register-btn">
+              Register
+            </Link>
+          </>
+        ) : (
+          <button
+            className="logout-btn"
+            onClick={logout}
+          >
+            Logout
+          </button>
+        )}
 
       </div>
 
     </nav>
-
   );
-
 }
-
 
 export default Navbar;

@@ -97,17 +97,17 @@ function Home() {
         <div className="container">
 
           <div className="stats-card">
-            <h2>1000+</h2>
+            <h2>0</h2>
             <p>Emergency Cases</p>
           </div>
 
           <div className="stats-card">
-            <h2>500+</h2>
+            <h2>0</h2>
             <p>Hospitals</p>
           </div>
 
           <div className="stats-card">
-            <h2>250+</h2>
+            <h2>0</h2>
             <p>Ambulances</p>
           </div>
 

@@ -1,9 +1,14 @@
 import React from "react";
 
-function EmergencyCard({ icon, title, description, buttonText }) {
+function EmergencyCard({
+  icon,
+  title,
+  description,
+  buttonText,
+  onClick,
+}) {
   return (
     <div className="emergency-card">
-
       <div className="service-card-icon">
         {icon}
       </div>
@@ -12,10 +17,9 @@ function EmergencyCard({ icon, title, description, buttonText }) {
 
       <p>{description}</p>
 
-      <button className="primary-btn">
+      <button className="primary-btn" onClick={onClick}>
         {buttonText}
       </button>
-
     </div>
   );
 }
