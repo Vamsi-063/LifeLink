@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 
 // Pages
@@ -19,7 +19,7 @@ import Profile from "../pages/Profile";
 // Component
 import ProtectedRoute from "../components/ProtectedRoute";
 
-
+const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 function AppRoutes() {
 
   return (
@@ -126,13 +126,12 @@ function AppRoutes() {
       {/* Page Not Found */}
 
       <Route
-
-        path="*"
-
-        element={<Home />}
-
-      />
-
+  path="/"
+  element={
+    isLoggedIn ? <Navigate to="/dashboard" replace /> : <Home />
+  }
+/>
+      
 
     </Routes>
 
