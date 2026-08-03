@@ -40,33 +40,25 @@ import BookAmbulance from "../pages/BookAmbulance";
 import ProtectedRoute from "../components/ProtectedRoute";
 
 function AppRoutes() {
-
-  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-
   return (
-
     <Routes>
 
-      {/* Home */}
-
-      <Route
-        path="/"
-        element={
-          isLoggedIn ? (
-            <Navigate to="/dashboard" replace />
-          ) : (
-            <Home />
-          )
-        }
-      />
-
-      {/* Authentication */}
-
+      {/* Public Pages */}
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
 
-      {/* Protected Pages */}
+      {/* Dashboard */}
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      />
 
+      {/* About */}
       <Route
         path="/about"
         element={
@@ -76,6 +68,7 @@ function AppRoutes() {
         }
       />
 
+      {/* Services */}
       <Route
         path="/services"
         element={
@@ -85,6 +78,7 @@ function AppRoutes() {
         }
       />
 
+      {/* Contact */}
       <Route
         path="/contact"
         element={
@@ -95,7 +89,6 @@ function AppRoutes() {
       />
 
       {/* Hospitals */}
-
       <Route
         path="/hospitals"
         element={
@@ -115,7 +108,6 @@ function AppRoutes() {
       />
 
       {/* Doctors */}
-
       <Route
         path="/doctors"
         element={
@@ -144,7 +136,6 @@ function AppRoutes() {
       />
 
       {/* Blood Banks */}
-
       <Route
         path="/bloodbanks"
         element={
@@ -173,7 +164,6 @@ function AppRoutes() {
       />
 
       {/* Emergency Contacts */}
-
       <Route
         path="/emergencycontacts"
         element={
@@ -184,7 +174,6 @@ function AppRoutes() {
       />
 
       {/* Ambulances */}
-
       <Route
         path="/ambulances"
         element={
@@ -212,17 +201,7 @@ function AppRoutes() {
         }
       />
 
-      {/* Dashboard */}
-
-      <Route
-        path="/dashboard"
-        element={
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        }
-      />
-
+      {/* Live Location */}
       <Route
         path="/location"
         element={
@@ -232,6 +211,7 @@ function AppRoutes() {
         }
       />
 
+      {/* Profile */}
       <Route
         path="/profile"
         element={
@@ -242,16 +222,13 @@ function AppRoutes() {
       />
 
       {/* 404 */}
-
       <Route
         path="*"
         element={<Navigate to="/" replace />}
       />
 
     </Routes>
-
   );
-
 }
 
 export default AppRoutes;

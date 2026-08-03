@@ -1,49 +1,24 @@
 {
   "users": [
     {
-      "name": "vamsi",
-      "email": "vamsi@gmail.com",
-      "password": "123456",
-      "phone": "9381212527",
-      "bloodGroup": "O+",
-      "emergencyPhone": "8639337702",
-      "id": "HRqUSnpK6oY"
-    },
-    {
-      "name": "vamsi krishna reddy",
-      "email": "reddy@gmail.com",
-      "password": "098765",
-      "phone": "9876543210",
-      "bloodGroup": "O+",
-      "emergencyPhone": "6324167890",
-      "id": "KhrRkBXmXKw"
+      "name": "lahari",
+      "email": "laharikareti@gmail.com",
+      "password": "2349",
+      "phone": "8639337702",
+      "bloodGroup": "A-",
+      "emergencyName": "9876543210",
+      "emergencyPhone": "9876543452",
+      "id": 1
     },
     {
       "name": "yash",
       "email": "yash@gmail.com",
-      "password": "112233",
-      "phone": "9381212527",
-      "bloodGroup": "O+",
-      "emergencyPhone": "9392882480",
-      "id": "geUNhDqkuOc"
-    },
-    {
-      "name": "zugi",
-      "email": "zugi@gmail.com",
-      "password": "009988",
-      "phone": "9876543210",
-      "bloodGroup": "AB+",
-      "emergencyPhone": "9876543223",
-      "id": "05TFGY3"
-    },
-    {
-      "name": "vamsi",
-      "email": "vamsichinna@gmail.com",
-      "password": "120983",
+      "password": "12345",
       "phone": "8639337702",
-      "bloodGroup": "AB-",
-      "emergencyPhone": "9876543452",
-      "id": "gPEL-eEha98"
+      "bloodGroup": "A-",
+      "emergencyName": "9876543210",
+      "emergencyPhone": "8976543215",
+      "id": 2
     }
   ]
 }

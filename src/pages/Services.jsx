@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import EmergencyCard from "../components/EmergencyCard";
+import EmergencyCard from "./EmergencyCard";
 
 import {
   FaTruckMedical,

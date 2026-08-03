@@ -1,15 +1,63 @@
-import React, { useState } from "react";
-import { FaHospital, FaLocationDot, FaPhone } from "react-icons/fa6";
+import React, { useEffect, useState } from "react";
+import { FaHospital, FaLocationDot } from "react-icons/fa6";
 import "./Hospitals.css";
-import hospitals from "../data/hospitals";
-import { useNavigate } from "react-router-dom";
-
 
 function Hospitals() {
   const [search, setSearch] = useState("");
-  
+  const [hospitals, setHospitals] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      alert("Geolocation is not supported by your browser.");
+      setLoading(false);
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords;
+
+        const query = `
+          [out:json];
+          (
+            node["amenity"="hospital"](around:5000,${latitude},${longitude});
+            way["amenity"="hospital"](around:5000,${latitude},${longitude});
+            relation["amenity"="hospital"](around:5000,${latitude},${longitude});
+          );
+          out center;
+        `;
+
+        try {
+          const response = await fetch(
+            "https://overpass-api.de/api/interpreter",
+            {
+              method: "POST",
+              body: query,
+            }
+          );
+
+          const data = await response.json();
+
+          setHospitals(data.elements || []);
+        } catch (error) {
+          console.error(error);
+          alert("Unable to fetch nearby hospitals.");
+        }
+
+        setLoading(false);
+      },
+      () => {
+        alert("Please allow location permission.");
+        setLoading(false);
+      }
+    );
+  }, []);
+
   const filteredHospitals = hospitals.filter((hospital) =>
-    hospital.name.toLowerCase().includes(search.toLowerCase())
+    (hospital.tags?.name || "")
+      .toLowerCase()
+      .includes(search.toLowerCase())
   );
 
   return (
@@ -19,7 +67,7 @@ function Hospitals() {
         <h1 className="page-title">Nearby Hospitals</h1>
 
         <p className="section-text">
-          Search hospitals and find emergency medical care quickly.
+          Find hospitals near your current location.
         </p>
 
         <input
@@ -30,56 +78,71 @@ function Hospitals() {
           className="hospital-search"
         />
 
-        <div className="service-grid">
+        {loading ? (
+          <div className="no-results">
+            <h2>📍 Finding Nearby Hospitals...</h2>
+          </div>
+        ) : filteredHospitals.length > 0 ? (
 
-  {filteredHospitals.length > 0 ? (
+          <div className="service-grid">
 
-    filteredHospitals.map((hospital) => (
+            {filteredHospitals.map((hospital, index) => {
 
-      <div key={hospital.id} className="emergency-card">
+              const lat = hospital.lat || hospital.center?.lat;
+              const lon = hospital.lon || hospital.center?.lon;
 
-        <div className="service-card-icon">
-          <FaHospital />
-        </div>
+              return (
+                <div
+                  key={index}
+                  className="emergency-card"
+                >
 
-        <h3>{hospital.name}</h3>
+                  <div className="service-card-icon">
+                    <FaHospital />
+                  </div>
 
-        <p>
-          <FaLocationDot /> {hospital.location}
-        </p>
+                  <h3>
+                    {hospital.tags?.name || "Unnamed Hospital"}
+                  </h3>
 
-        <p>
-          <FaPhone /> {hospital.phone}
-        </p>
+                  <p>
+                    <FaLocationDot />{" "}
+                    {hospital.tags?.["addr:street"] ||
+                      hospital.tags?.["addr:full"] ||
+                      "Address Not Available"}
+                  </p>
 
-        <button
-          className="primary-btn"
-          onClick={() => {
-            window.location.href = `/hospital/${hospital.id}`;
-          }}
-        >
-          View Details
-        </button>
+                  <button
+                    className="primary-btn"
+                    onClick={() =>
+                      window.open(
+                        `https://www.google.com/maps?q=${lat},${lon}`,
+                        "_blank"
+                      )
+                    }
+                  >
+                    Open in Google Maps
+                  </button>
 
-      </div>
+                </div>
+              );
+            })}
 
-    ))
+          </div>
 
-  ) : (
+        ) : (
 
-    <div className="no-results">
+          <div className="no-results">
 
-      <h2>🏥 No Hospital Found</h2>
+            <h2>🏥 No Hospitals Found</h2>
 
-      <p>
-        Try searching with another hospital name.
-      </p>
+            <p>
+              No hospitals found within 5 km of your location.
+            </p>
 
-    </div>
+          </div>
 
-  )}
-
-</div>
+        )}
 
       </div>
     </section>
